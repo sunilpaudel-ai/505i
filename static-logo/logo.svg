@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" width="640" height="160">
+  <defs>
+    <linearGradient id="mark-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6a5cf5"/>
+      <stop offset="100%" stop-color="#3f2fc9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: rounded square with a check-through-document mark (verification / screening) -->
+  <rect x="8" y="8" width="144" height="144" rx="34" fill="url(#mark-grad)"/>
+  <!-- document -->
+  <rect x="52" y="40" width="56" height="76" rx="6" fill="#ffffff" opacity="0.95"/>
+  <rect x="62" y="56" width="36" height="6" rx="3" fill="#6a5cf5" opacity="0.55"/>
+  <rect x="62" y="70" width="36" height="6" rx="3" fill="#6a5cf5" opacity="0.35"/>
+  <rect x="62" y="84" width="22" height="6" rx="3" fill="#6a5cf5" opacity="0.35"/>
+  <!-- check badge overlapping the document corner -->
+  <circle cx="106" cy="104" r="26" fill="#22c55e"/>
+  <path d="M94 104 L103 113 L120 94" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Wordmark -->
+  <text x="180" y="102" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif" font-size="72" font-weight="700" fill="#1c2230">505i</text>
+</svg>
