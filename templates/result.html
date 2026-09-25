@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<a class="back" href="{{ url_for('index') }}">&larr; Back to all candidates</a>
+
+<div class="card" style="margin-top:16px;">
+  <h2>{{ c['filename'] }}</h2>
+  <p class="hint">
+    Uploaded {{ c['uploaded_at'][:19].replace('T',' ') }} &middot;
+    <span class="badge {{ c['mode'] }}">{{ 'AI screening' if c['mode']=='ai' else 'Offline demo mode' }}</span>
+  </p>
+  <pre class="summary">{{ c['summary'] }}</pre>
+</div>
+
+{% if c['flags'] %}
+<div class="card">
+  <h2>Flags for follow-up</h2>
+  <ul class="flags">
+    {% for f in c['flags'].split(';') %}
+      {% if f.strip() %}<li>{{ f.strip() }}</li>{% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% endblock %}
