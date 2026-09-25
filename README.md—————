@@ -1,0 +1,13 @@
+505i -- Candidate and Document Screening (MVP prototype)
+
+A working prototype for a small B2B tool aimed at recruitment and travel agencies: upload a candidate's CV or document, get an AI generated screening summary and a list of missing or unclear items to follow up on.
+
+What's included: app.py is the Flask backend (PDF upload, text extraction, AI or offline fallback screening, SQLite storage, simple dashboard). templates/ has the 3 pages. requirements.txt lists Python dependencies. Procfile lets Render run the app with gunicorn.
+
+Run it locally: pip install -r requirements.txt, then python app.py, then open http://localhost:5000
+
+By default, with no API key set, it runs in offline demo mode using a basic regex based extractor.
+
+Turning on real AI screening: get a Claude API key from the Anthropic Console at console.anthropic.com, then set it as an environment variable named ANTHROPIC_API_KEY. Every upload then gets a real AI written candidate summary and checklist.
+
+Deploying on Render: create a Web Service on Render and connect this GitHub repo. Build command is pip install -r requirements.txt. Start command is gunicorn app:app. Add ANTHROPIC_API_KEY as an environment variable. Once deployed, point 505i.com's DNS (a CNAME record) at the Render URL.
