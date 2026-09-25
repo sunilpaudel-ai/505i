@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}505i{% endblock %}</title>
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --ink:#1c2230; --muted:#6b7280;
+      --accent:#5145e8; --accent-ink:#ffffff; --border:#e6e8f0;
+      --flag:#b45309; --flag-bg:#fff7ed; --ok:#047857; --ok-bg:#ecfdf5;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg); color:var(--ink); padding-block:32px;
+    }
+    .wrap{max-width:760px; margin:0 auto; padding-inline:20px;}
+    header.top{display:flex; align-items:center; gap:12px; margin-bottom:28px;}
+    .logo{
+      width:40px; height:40px; border-radius:10px;
+      background:linear-gradient(135deg,#6a5cf5,#4338ca);
+      display:flex; align-items:center; justify-content:center;
+      color:#fff; font-weight:700; font-size:18px; flex:none;
+    }
+    header.top h1{font-size:20px; margin:0;}
+    header.top p{margin:2px 0 0; color:var(--muted); font-size:13px;}
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:16px;
+      padding:24px; margin-bottom:20px; box-shadow:0 1px 2px rgba(20,20,40,.03);
+    }
+    .card h2{margin:0 0 4px; font-size:16px;}
+    .card p.hint{color:var(--muted); font-size:13px; margin:0 0 18px;}
+    .dropzone{
+      border:1.5px dashed var(--border); border-radius:12px; padding:28px;
+      text-align:center; background:#fbfbfe;
+    }
+    input[type=file]{display:block; margin:0 auto 14px;}
+    button, .btn{
+      background:var(--accent); color:var(--accent-ink); border:none;
+      padding:10px 18px; border-radius:10px; font-size:14px; font-weight:600;
+      cursor:pointer; text-decoration:none; display:inline-block;
+    }
+    button:hover, .btn:hover{opacity:.92}
+    .flash{
+      background:var(--flag-bg); color:var(--flag); border:1px solid #fed7aa;
+      padding:10px 14px; border-radius:10px; font-size:13px; margin-bottom:16px;
+    }
+    table{width:100%; border-collapse:collapse; font-size:13.5px;}
+    th{text-align:left; color:var(--muted); font-weight:600; padding:8px 6px; border-bottom:1px solid var(--border);}
+    td{padding:10px 6px; border-bottom:1px solid var(--border);}
+    tr:last-child td{border-bottom:none;}
+    .badge{
+      display:inline-block; padding:2px 9px; border-radius:999px; font-size:11.5px; font-weight:600;
+    }
+    .badge.ai{background:var(--ok-bg); color:var(--ok);}
+    .badge.offline{background:#f1f5f9; color:#475569;}
+    .empty{color:var(--muted); font-size:13.5px; padding:8px 6px;}
+    pre.summary{
+      white-space:pre-wrap; font-family:inherit; font-size:13.5px; line-height:1.6;
+      background:#fafaff; border:1px solid var(--border); border-radius:12px; padding:16px;
+    }
+    .flags{list-style:none; padding:0; margin:0;}
+    .flags li{
+      background:var(--flag-bg); color:var(--flag); border:1px solid #fed7aa;
+      border-radius:8px; padding:8px 12px; margin-bottom:8px; font-size:13px;
+    }
+    .footer-note{color:var(--muted); font-size:12px; text-align:center; margin-top:24px;}
+    a.back{color:var(--accent); font-size:13px; text-decoration:none; font-weight:600;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 160 160" aria-hidden="true">
+          <rect x="30" y="24" width="56" height="76" rx="6" fill="#ffffff" opacity="0.95"/>
+          <rect x="40" y="40" width="36" height="6" rx="3" fill="#6a5cf5" opacity="0.55"/>
+          <rect x="40" y="54" width="36" height="6" rx="3" fill="#6a5cf5" opacity="0.35"/>
+          <rect x="40" y="68" width="22" height="6" rx="3" fill="#6a5cf5" opacity="0.35"/>
+          <circle cx="84" cy="88" r="26" fill="#22c55e"/>
+          <path d="M72 88 L81 97 L98 78" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <h1>505i</h1>
+        <p>AI screening for recruitment &amp; travel agencies</p>
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <p class="footer-note">MVP prototype &middot; internal demo build</p>
+  </div>
+</body>
+</html>
